@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merry Christmas</title>
+<style>
+  body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #141e30;
+    overflow: hidden;
+  }
+  .tree-container {
+    position: relative;
+    width: 80vw;
+    height: 80vw;
+  }
+  .tree {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(#1b5446 15%, transparent 16%), radial-gradient(#1b5446 15%, transparent 16%);
+    background-size: 30px 60px;
+    background-position: 0 0, 15px 30px;
+  }
+  .tree::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(#388e3c 20%, #4caf50 50%, #388e3c 80%);
+    transform: translateX(-50%);
+  }
+  .lights {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 20%, #ffeb3b, transparent 70%);
+    background-size: 300% 300%;
+    animation: lights 3s infinite alternate;
+  }
+  @keyframes lights {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+  }
+  .star {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    width: 15px;
+    height: 15px;
+    background: gold;
+    transform: translateX(-50%) rotate(45deg);
+  }
+  .star::before, .star::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: gold;
+    top: -50%;
+    left: 0;
+    transform: rotate(-45deg);
+  }
+  .star::after {
+    top: auto;
+    bottom: -50%;
+    transform: rotate(45deg);
+  }
+</style>
+</head>
+<body>
+
+<div class="tree-container">
+  <div class="tree">
+    <div class="lights"></div>
+    <div class="star"></div>
+  </div>
+</div>
+
+<script>
+  // Add some interactivity with JavaScript
+  const lights = document.querySelector('.lights');
+  const tree = document.querySelector('.tree-container');
+
+  tree.addEventListener('click', () => {
+    lights.style.animationIterationCount = (Math.random() * 10) | 0;
+  });
+</script>
+
+</body>
+</html>
